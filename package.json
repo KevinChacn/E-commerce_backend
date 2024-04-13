@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce_backend",
+  "name": "prueba-tecnica-ecommerce",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,13 +9,20 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kevin Chacón Dev",
   "license": "ISC",
-  "devDependencies": {
-    "typescript": "^5.4.5"
-  },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.19.2",
-    "mongoose": "^8.3.1"
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^6.5.0",
+    "mongoose": "^5.13.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

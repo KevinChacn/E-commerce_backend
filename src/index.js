@@ -1,16 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
+require('dotenv').config();
+const app = require('./app');
+const database = require('./database');
 
 
-// Inicializa la aplicación Express
-const app = express();
-
-const PORT = process.env.PORT || 3000;
-
-app.use(express.json());
-
-
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(3000)
+console.log('Server listen on port', 3000)
