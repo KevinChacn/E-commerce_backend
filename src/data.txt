@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "1741996467160",
+      "studentId": "20230002",
+      "firstName": "Nicol",
+      "lastName": "Samudio",
+      "email": "nicol.samudio@universidad.edu",
+      "career": "Ingeniería Informática",
+      "semester": 7,
+      "createdAt": "2025-03-14T23:54:27.160Z",
+      "status": "inactive",
+      "updatedAt": "2025-03-14T23:55:32.479Z"
+    }
+  ]
+}

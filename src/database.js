@@ -1,30 +1,23 @@
-const mongoose = require('mongoose');
+const fs = require('fs').promises;
+const path = require('path');
+const config = require('./config');
 
-async function connectToDatabase() {
-  try {
-    // URI de conexión a la base de datos
-    const uri = "mongodb+srv://kevin-chacon:J00W{4H2-a)m@kevin-devs.ikmkd03.mongodb.net/?retryWrites=true&w=majority&appName=kevin-devs";
+const DATA_PATH = path.resolve(__dirname, config.DATA_FILE);
 
-    // Opciones de conexión
-    const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-      connectTimeoutMS: 30000 // Establece el tiempo máximo de espera para la conexión en 30 segundos (30000 milisegundos)
-    };
-
-    // Conectar a la base de datos
-    await mongoose.connect(uri, options);
-    console.log("Successfully connected to MongoDB");
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-  }
+async function readData() {
+    try {
+        await fs.mkdir(path.dirname(DATA_PATH), { recursive: true });
+        const data = await fs.readFile(DATA_PATH, 'utf8');
+        return JSON.parse(data || '{"users":[]}');
+    } catch (error) {
+        return { users: [] };
+    }
 }
 
-// Llamar a la función para conectar a la base de datos
-connectToDatabase();
+async function saveData(data) {
+    await fs.writeFile(DATA_PATH, JSON.stringify(data, null, 2));
+}
 
-
+module.exports = { readData, saveData };
 
 

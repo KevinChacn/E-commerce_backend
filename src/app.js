@@ -1,27 +1,23 @@
 const express = require('express');
 const morgan = require('morgan');
 const pkg = require('../package.json');
+const userRoutes = require('./routes/users.routes');
 
-const productRoutes = require('./routes/products.routes');
-const ordersRoutes = require('./routes/orders.routes');
-
-const app = express()
+const app = express();
 
 app.set('pkg', pkg);
-app.use(express.json())
+app.use(express.json());
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     res.json({
-        name: app.set('pkg').name,
-        author: app.set('pkg').author,
-        Description: app.set('pkg').description,
-        version: app.set('pkg').version,
-    })
-})
+        name: app.get('pkg').name,
+        author: app.get('pkg').author,
+        description: app.get('pkg').description,
+        version: app.get('pkg').version
+    });
+});
 
-
-app.use('/api/products', productRoutes);
-app.use('/api/orders', ordersRoutes);
+app.use('/api/users', userRoutes);
 
 module.exports = app;
